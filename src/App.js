@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   if(!users.length){
-    return <div>loading...</div>
+    return <div>loading.........</div>
   }
   if(users.length){
     return <div>
