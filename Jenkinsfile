@@ -1,23 +1,33 @@
 node {
 
-    stage('Version') {
-
+    stage('Install Dependencies') {
+        steps {
+            echo 'Installing npm dependencies...'
+            bat 'npm install'
+            bat 'npm i react-router-dom'
+        }
     }
 
-    stage('Environment') {
-
+    stage('Build') {
+        steps {
+            echo 'Building React app...'
+            bat 'npm run build'
+        }
     }
 
-    stage('Document') {
-
-    }
-
-    stage('Compile') {
-
-    }
-
-    stage('Acceptance') {
-
+    stage('Deploy') {
+        steps {
+            echo 'Deploying React app...'
+            bat 'npm start'
+            // Example deployment: copy build folder somewhere or run deployment script
+            // Customize this as per your deployment process
+                
+            // For example, if deploying to a web server directory:
+            // bat 'xcopy /E /I build\\* C:\\inetpub\\wwwroot\\yourapp\\'
+                
+            // Or run a deploy script if you have one
+            // bat 'deploy-script.bat'
+        }
     }
 
     stage('Conclusion') {
@@ -31,3 +41,4 @@ node {
     }
 
 }
+
